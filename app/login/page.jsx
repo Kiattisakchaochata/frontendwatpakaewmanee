@@ -19,8 +19,8 @@ export default function LoginPage() {
   const API_URL =
     process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
 
-  const [email, setEmail] = useState("superadmin@example.com");
-  const [password, setPassword] = useState("123456");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [otpToken, setOtpToken] = useState("");
   const [requiresTwoFactor, setRequiresTwoFactor] = useState(false);
 
