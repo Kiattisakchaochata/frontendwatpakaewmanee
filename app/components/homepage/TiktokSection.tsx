@@ -20,7 +20,7 @@ export default function TiktokSection() {
     async function fetchVideos() {
       try {
         const apiUrl =
-          process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+          process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
 
         const res = await fetch(`${apiUrl}/video/public/videos`, {
           cache: "no-store",

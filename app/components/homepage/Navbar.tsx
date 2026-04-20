@@ -108,12 +108,12 @@ export default function Navbar() {
             );
           })}
 
-          <a
-            href="/admin"
-            className="inline-flex items-center justify-center rounded-full border border-[#d9c39a] bg-white px-6 py-2.5 text-sm font-semibold text-[#8d6720] shadow-[0_4px_12px_rgba(166,124,46,0.08)] transition hover:bg-[#fff7e8]"
-          >
-            หลังบ้าน
-          </a>
+          <Link
+  href="/login"
+  className="inline-flex items-center justify-center rounded-full border border-[#d9c39a] bg-white px-6 py-2.5 text-sm font-semibold text-[#8d6720] shadow-[0_4px_12px_rgba(166,124,46,0.08)] transition hover:bg-[#fff7e8]"
+>
+  เข้าสู่ระบบ
+</Link>
         </nav>
 
         {/* Mobile button */}
@@ -149,13 +149,13 @@ export default function Navbar() {
               );
             })}
 
-            <a
-              href="/admin"
-              onClick={() => setOpen(false)}
-              className="mt-3 inline-flex items-center justify-center rounded-2xl border border-[#d9c39a] px-4 py-3 text-sm font-semibold text-[#8d6720] transition hover:bg-[#fff7e8]"
-            >
-              หลังบ้าน
-            </a>
+            <Link
+  href="/login"
+  onClick={() => setOpen(false)}
+  className="mt-3 inline-flex items-center justify-center rounded-2xl border border-[#d9c39a] px-4 py-3 text-sm font-semibold text-[#8d6720] transition hover:bg-[#fff7e8]"
+>
+  เข้าสู่ระบบ
+</Link>
           </div>
         </div>
       )}

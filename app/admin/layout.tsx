@@ -20,7 +20,7 @@ export default function AdminLayout({
 
     if (!token || !user) {
       removeAuth();
-      router.replace("/login");
+      router.replace("/");
       return;
     }
 

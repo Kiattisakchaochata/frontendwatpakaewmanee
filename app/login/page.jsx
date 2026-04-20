@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   Eye,
@@ -17,7 +18,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -150,6 +151,7 @@ export default function LoginPage() {
               ? "กรอกรหัส 6 หลักจากแอป Authenticator เพื่อเข้าสู่ระบบ"
               : "สำหรับ Super Admin และ Admin เท่านั้น"}
           </p>
+          
         </div>
 
         {!requiresTwoFactor ? (
@@ -209,20 +211,29 @@ export default function LoginPage() {
               </div>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#c9a34e] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#a67c2e] disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {loading ? (
-                <>
-                  <Loader className="h-4 w-4 animate-spin" />
-                  กำลังเข้าสู่ระบบ...
-                </>
-              ) : (
-                "เข้าสู่ระบบ"
-              )}
-            </button>
+            <div className="space-y-3">
+  <button
+    type="submit"
+    disabled={loading}
+    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#c9a34e] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#a67c2e] disabled:cursor-not-allowed disabled:opacity-60"
+  >
+    {loading ? (
+      <>
+        <Loader className="h-4 w-4 animate-spin" />
+        กำลังเข้าสู่ระบบ...
+      </>
+    ) : (
+      "เข้าสู่ระบบ"
+    )}
+  </button>
+
+  <Link
+    href="/"
+    className="inline-flex w-full items-center justify-center rounded-2xl border border-[#d9c39a] bg-white px-5 py-3 text-sm font-semibold text-[#8d6720] transition hover:bg-[#fff7e8]"
+  >
+    กลับหน้าแรก
+  </Link>
+</div>
           </form>
         ) : (
           <form onSubmit={handleVerifyTwoFactor} className="mt-8 space-y-5">

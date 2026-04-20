@@ -137,7 +137,7 @@ export default function AdminVideoPage() {
 
   const [deleteTarget, setDeleteTarget] = useState<VideoItem | null>(null);
 
-  const API_URL = "http://localhost:5001/api";
+  const API_URL = "http://localhost:8899/api";
 
   async function fetchVideos() {
     try {

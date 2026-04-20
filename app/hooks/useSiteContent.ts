@@ -35,7 +35,7 @@ export type SiteContent = {
 };
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
 
 const fetcher = async (url: string): Promise<SiteContent> => {
   const res = await fetch(url, { cache: "no-store" });

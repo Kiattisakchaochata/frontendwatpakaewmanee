@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Loader, ShieldCheck, KeyRound } from "lucide-react";
 import SuccessBackupModal from "@/app/components/ui/SuccessBackupModal";
@@ -8,7 +9,7 @@ import SuccessBackupModal from "@/app/components/ui/SuccessBackupModal";
 export default function SetupTwoFactorPage() {
   const router = useRouter();
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
 
   const [email, setEmail] = useState("");
   const [setupToken, setSetupToken] = useState("");
@@ -143,6 +144,12 @@ export default function SetupTwoFactorPage() {
               กรุณาสแกน QR Code ด้วยแอป Authenticator แล้วกรอกรหัส 6
               หลักเพื่อเปิดใช้งาน
             </p>
+            <Link
+  href="/"
+  className="mt-4 inline-flex items-center justify-center text-sm font-semibold text-[#8d6720] transition hover:text-[#a67c2e]"
+>
+  ← กลับหน้าแรก
+</Link>
           </div>
 
           <div className="mt-6 rounded-2xl border border-[#ead7b0] bg-[#fffaf0] px-4 py-3">

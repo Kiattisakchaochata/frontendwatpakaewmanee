@@ -85,7 +85,7 @@ function DeleteConfirmModal({
 export default function AdminUsersPage() {
   const router = useRouter();
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
 
   const currentUser = getUser();
 
@@ -153,14 +153,14 @@ export default function AdminUsersPage() {
 
   useEffect(() => {
     if (!currentUser) {
-      router.replace("/login");
+      router.replace("/");
       return;
     }
 
     if (currentUser.role !== "SUPER_ADMIN") {
-      router.replace("/admin");
-      return;
-    }
+  router.replace("/");
+  return;
+}
 
     loadUsers();
   }, []);

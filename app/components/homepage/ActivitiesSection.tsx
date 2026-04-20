@@ -22,7 +22,7 @@ const ITEMS_PER_PAGE = 8;
 
 export default function ActivitiesSection() {
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
 
   const [activities, setActivities] = useState<ActivityItem[]>([]);
   const [loading, setLoading] = useState(true);

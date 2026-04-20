@@ -23,7 +23,7 @@ const ITEMS_PER_PAGE = 12;
 
 export default function GallerySection() {
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
+    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
 
   const [images, setImages] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
