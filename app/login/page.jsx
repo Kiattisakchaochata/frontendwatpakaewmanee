@@ -153,7 +153,7 @@ export default function LoginPage() {
         </div>
 
         {!requiresTwoFactor ? (
-          <form onSubmit={handleLogin} className="mt-8 space-y-5">
+          <form onSubmit={handleLogin} autoComplete="off" className="mt-8 space-y-5">
             <div>
               <label className="mb-2 block text-sm font-semibold text-[#6b5b3e]">
                 อีเมล
@@ -162,12 +162,14 @@ export default function LoginPage() {
               <div className="relative">
                 <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8a7a5d]" />
                 <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="กรอกอีเมล"
-                  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-4 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
-                />
+  type="email"
+  name="admin_login_email"
+  autoComplete="off"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  placeholder="กรอกอีเมล"
+  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-4 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
+/>
               </div>
             </div>
 
@@ -179,12 +181,14 @@ export default function LoginPage() {
               <div className="relative">
                 <Lock className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8a7a5d]" />
                 <input
-                  type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="กรอกรหัสผ่าน"
-                  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-12 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
-                />
+  type={showPassword ? "text" : "password"}
+  name="admin_login_password"
+  autoComplete="new-password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  placeholder="กรอกรหัสผ่าน"
+  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-12 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
+/>
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
