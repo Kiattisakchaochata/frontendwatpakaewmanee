@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { setAuth } from "@/lib/auth";
 
-export default function LoginPage() {
+export default function LoginPageClient() {
   const router = useRouter();
 
   const API_URL =
@@ -55,16 +55,16 @@ export default function LoginPage() {
       const data = await res.json();
 
       if (!res.ok) {
-  if (data.requiresTwoFactorSetup && data.setupToken) {
-    localStorage.setItem("twoFactorSetupToken", data.setupToken);
-    localStorage.setItem("twoFactorSetupEmail", data.email || email.trim());
-    router.replace("/setup-2fa");
-    return;
-  }
+        if (data.requiresTwoFactorSetup && data.setupToken) {
+          localStorage.setItem("twoFactorSetupToken", data.setupToken);
+          localStorage.setItem("twoFactorSetupEmail", data.email || email.trim());
+          router.replace("/setup-2fa");
+          return;
+        }
 
-  setErrorMessage(data.message || "เข้าสู่ระบบไม่สำเร็จ");
-  return;
-}
+        setErrorMessage(data.message || "เข้าสู่ระบบไม่สำเร็จ");
+        return;
+      }
 
       if (data.requiresTwoFactor) {
         setRequiresTwoFactor(true);
@@ -151,11 +151,14 @@ export default function LoginPage() {
               ? "กรอกรหัส 6 หลักจากแอป Authenticator เพื่อเข้าสู่ระบบ"
               : "สำหรับ Super Admin และ Admin เท่านั้น"}
           </p>
-          
         </div>
 
         {!requiresTwoFactor ? (
-          <form onSubmit={handleLogin} autoComplete="off" className="mt-8 space-y-5">
+          <form
+            onSubmit={handleLogin}
+            autoComplete="off"
+            className="mt-8 space-y-5"
+          >
             <div>
               <label className="mb-2 block text-sm font-semibold text-[#6b5b3e]">
                 อีเมล
@@ -164,14 +167,14 @@ export default function LoginPage() {
               <div className="relative">
                 <Mail className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8a7a5d]" />
                 <input
-  type="email"
-  name="admin_login_email"
-  autoComplete="off"
-  value={email}
-  onChange={(e) => setEmail(e.target.value)}
-  placeholder="กรอกอีเมล"
-  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-4 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
-/>
+                  type="email"
+                  name="admin_login_email"
+                  autoComplete="off"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="กรอกอีเมล"
+                  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-4 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
+                />
               </div>
             </div>
 
@@ -183,14 +186,14 @@ export default function LoginPage() {
               <div className="relative">
                 <Lock className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8a7a5d]" />
                 <input
-  type={showPassword ? "text" : "password"}
-  name="admin_login_password"
-  autoComplete="new-password"
-  value={password}
-  onChange={(e) => setPassword(e.target.value)}
-  placeholder="กรอกรหัสผ่าน"
-  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-12 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
-/>
+                  type={showPassword ? "text" : "password"}
+                  name="admin_login_password"
+                  autoComplete="new-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="กรอกรหัสผ่าน"
+                  className="w-full rounded-2xl border border-[#d9c39a] bg-white py-3 pl-11 pr-12 text-sm text-[#4a3b22] outline-none transition focus:border-[#c9a34e] focus:ring-2 focus:ring-[#f3e4bc]"
+                />
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
@@ -212,28 +215,28 @@ export default function LoginPage() {
             )}
 
             <div className="space-y-3">
-  <button
-    type="submit"
-    disabled={loading}
-    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#c9a34e] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#a67c2e] disabled:cursor-not-allowed disabled:opacity-60"
-  >
-    {loading ? (
-      <>
-        <Loader className="h-4 w-4 animate-spin" />
-        กำลังเข้าสู่ระบบ...
-      </>
-    ) : (
-      "เข้าสู่ระบบ"
-    )}
-  </button>
+              <button
+                type="submit"
+                disabled={loading}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#c9a34e] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#a67c2e] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {loading ? (
+                  <>
+                    <Loader className="h-4 w-4 animate-spin" />
+                    กำลังเข้าสู่ระบบ...
+                  </>
+                ) : (
+                  "เข้าสู่ระบบ"
+                )}
+              </button>
 
-  <Link
-    href="/"
-    className="inline-flex w-full items-center justify-center rounded-2xl border border-[#d9c39a] bg-white px-5 py-3 text-sm font-semibold text-[#8d6720] transition hover:bg-[#fff7e8]"
-  >
-    กลับหน้าแรก
-  </Link>
-</div>
+              <Link
+                href="/"
+                className="inline-flex w-full items-center justify-center rounded-2xl border border-[#d9c39a] bg-white px-5 py-3 text-sm font-semibold text-[#8d6720] transition hover:bg-[#fff7e8]"
+              >
+                กลับหน้าแรก
+              </Link>
+            </div>
           </form>
         ) : (
           <form onSubmit={handleVerifyTwoFactor} className="mt-8 space-y-5">

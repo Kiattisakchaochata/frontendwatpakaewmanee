@@ -5,7 +5,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-[#b88a2a]">
-            Wat Pa Kaew
+            Wat Pa Kaew Maneenopphakao
           </p>
           <h3 className="mt-2 text-xl font-bold text-[#8d6720] md:text-2xl">
             วัดป่าแก้วมณีนพเก้า

@@ -63,11 +63,11 @@ export default function TiktokSection() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-3 text-center md:mb-4">
           <h2 className="mt-1 text-3xl font-bold tracking-tight text-[#8d6720] md:text-4xl">
-            วิดีโอ TikTok
+            วิดีโอ
           </h2>
 
           <p className="mx-auto mt-1.5 max-w-2xl text-sm leading-6 text-[#6b5b3e] md:text-base">
-            รวมวิดีโอที่เผยแพร่จากระบบหลังบ้าน
+            รวมวิดีโอที่เผยแพร่อยู่บน Tiktok
           </p>
         </div>
 
