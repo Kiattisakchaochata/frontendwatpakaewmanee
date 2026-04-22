@@ -90,37 +90,39 @@ export default function Navbar() {
           : "border-b border-[#f0e3c3] bg-white/90 backdrop-blur-md"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-4 py-3 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-3 py-2 md:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           {/* Brand */}
-          <a href="#top" className="flex min-w-0 shrink-0 items-center gap-3 md:gap-4">
-            <div
-              className={`relative shrink-0 overflow-hidden rounded-full border bg-white shadow-[0_6px_16px_rgba(166,124,46,0.10)] transition-all duration-300 ${
-                scrolled
-                  ? "h-14 w-14 border-[#dcc79d] md:h-16 md:w-16"
-                  : "h-16 w-16 border-[#e7d7b4] md:h-[72px] md:w-[72px]"
-              }`}
-            >
-              <Image
-                src="/logo.jpg"
-                alt="Wat Pa Kaew Maneenoppakao Logo"
-                fill
-                sizes="(max-width: 767px) 56px, (max-width: 1023px) 64px, 72px"
-                className="object-cover"
-                priority
-              />
-            </div>
+          <a
+  href="#top"
+  className="flex min-w-0 flex-1 items-center gap-2 pr-2 md:gap-4"
+>
+  <div
+    className={`relative shrink-0 overflow-hidden rounded-full border bg-white shadow-sm ${
+      scrolled
+        ? "h-12 w-12 border-[#dcc79d]"
+        : "h-14 w-14 border-[#e7d7b4]"
+    }`}
+  >
+    <Image
+      src="/logo.jpg"
+      alt="logo"
+      fill
+      className="object-cover"
+      priority
+    />
+  </div>
 
-            <div className="min-w-0 leading-tight">
-              <p className="truncate text-[15px] font-bold text-[#4a3b22] sm:text-lg md:text-[20px] lg:text-[22px]">
-                วัดป่าแก้วมณีนพเก้า
-              </p>
+  <div className="min-w-0 leading-tight">
+    <p className="truncate text-[13px] font-bold text-[#4a3b22] sm:text-[15px]">
+      วัดป่าแก้วมณีนพเก้า
+    </p>
 
-              <p className="mt-1 truncate text-[10px] font-semibold uppercase tracking-[0.28em] text-[#b88a2a] sm:text-[11px] md:text-xs lg:text-[13px]">
-                Wat Pa Kaew Maneenopphakao
-              </p>
-            </div>
-          </a>
+    <p className="truncate text-[8px] font-semibold tracking-[0.18em] text-[#b88a2a] sm:text-[10px]">
+      WAT PA KAEW MANEENOPPHAKAO
+    </p>
+  </div>
+</a>
 
           {/* Desktop */}
           <div className="hidden min-w-0 flex-1 items-center justify-end gap-4 lg:flex">
@@ -184,10 +186,10 @@ export default function Navbar() {
 
           {/* Mobile button */}
           <button
-            onClick={() => setOpen(!open)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[#ead7b0] text-[#6b5b3e] transition hover:bg-[#fff7e8] lg:hidden"
-            aria-label="Toggle Menu"
-          >
+  onClick={() => setOpen(!open)}
+  className="ml-2 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#ead7b0] bg-white text-[#8d6720] shadow-sm transition hover:bg-[#fff7e8] lg:hidden"
+  aria-label="Toggle Menu"
+>
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
@@ -196,7 +198,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div className="border-t border-[#ead7b0] bg-white lg:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col px-4 py-4 md:px-6">
+          <div className="mx-auto flex max-w-7xl flex-col px-3 py-3 md:px-6">
             {navItems.map((item) => {
               const id = item.href.replace("#", "");
 
