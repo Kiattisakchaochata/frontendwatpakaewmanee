@@ -79,14 +79,17 @@ export const metadata: Metadata = {
     images: ["/logo.jpg"],
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", type: "image/png", sizes: "192x192" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
-    ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
-    shortcut: ["/favicon.ico"],
-  },
+  icon: [
+    { url: "/favicon.ico", sizes: "any" },
+    { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    { url: "/icon.png", type: "image/png", sizes: "512x512" },
+  ],
+  apple: [
+    { url: "/apple-icon.png", sizes: "180x180" },
+  ],
+  shortcut: ["/favicon.ico"],
+},
   category: "religion",
 };
 

@@ -105,12 +105,12 @@ export default function Navbar() {
     }`}
   >
     <Image
-      src="/logo.jpg"
-      alt="logo"
-      fill
-      className="object-cover"
-      priority
-    />
+  src="/logo.jpg"
+  alt="logo"
+  fill
+  sizes="120px"
+  className="object-cover"
+/>
   </div>
 
   <div className="min-w-0 leading-tight">
