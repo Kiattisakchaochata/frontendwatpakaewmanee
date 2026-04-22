@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next";
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/", "/login", "/setup-2fa"],
+        disallow: ["/admin", "/login", "/seo-preview"],
       },
     ],
     sitemap: "https://watpakaewmanee.com/sitemap.xml",
