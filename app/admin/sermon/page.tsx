@@ -153,7 +153,7 @@ function DeleteConfirmModal({
 
 export default function AdminSermonPage() {
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
+    process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const [list, setList] = useState<Sermon[]>([]);
   const [editing, setEditing] = useState<Sermon | null>(null);

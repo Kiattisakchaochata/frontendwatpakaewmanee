@@ -342,7 +342,7 @@ function ActivityModal({
 
 export default function AdminActivityPage() {
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
+    process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const [activities, setActivities] = useState<ActivityItem[]>([]);
   const [loading, setLoading] = useState(true);

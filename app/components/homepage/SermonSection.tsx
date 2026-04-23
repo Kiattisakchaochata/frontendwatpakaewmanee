@@ -21,7 +21,7 @@ const ITEMS_PER_PAGE = 6;
 
 export default function SermonSection() {
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
+    process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const [sermons, setSermons] = useState<Sermon[]>([]);
   const [loading, setLoading] = useState(true);

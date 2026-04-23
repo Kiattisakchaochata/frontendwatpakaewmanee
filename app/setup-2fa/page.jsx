@@ -9,7 +9,7 @@ import SuccessBackupModal from "@/app/components/ui/SuccessBackupModal";
 export default function SetupTwoFactorPage() {
   const router = useRouter();
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
+    process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const [email, setEmail] = useState("");
   const [setupToken, setSetupToken] = useState("");

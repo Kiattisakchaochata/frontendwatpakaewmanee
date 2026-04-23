@@ -14,6 +14,10 @@ import {
   X,
   Users,
   AlertTriangle,
+  MonitorSmartphone,
+  Globe,
+  Clock3,
+  LockKeyhole,
 } from "lucide-react";
 
 function DeleteConfirmModal({
@@ -34,7 +38,9 @@ function DeleteConfirmModal({
           </div>
 
           <div className="min-w-0 flex-1">
-            <h3 className="text-xl font-bold text-[#8d6720]">ยืนยันการลบผู้ใช้</h3>
+            <h3 className="text-xl font-bold text-[#8d6720]">
+              ยืนยันการลบผู้ใช้
+            </h3>
             <p className="mt-2 text-sm leading-7 text-[#6b5b3e]">
               คุณต้องการลบผู้ใช้{" "}
               <span className="font-semibold text-[#4a3b22]">
@@ -82,10 +88,36 @@ function DeleteConfirmModal({
   );
 }
 
+function formatLastLogin(dateValue) {
+  if (!dateValue) return "-";
+
+  const raw = String(dateValue);
+  const parsed =
+    /^\d+$/.test(raw) ? new Date(Number(raw)) : new Date(dateValue);
+
+  if (Number.isNaN(parsed.getTime())) return "-";
+
+  return parsed.toLocaleString("th-TH", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+}
+
+function InfoRow({ icon: Icon, label, value }) {
+  return (
+    <div className="flex items-start gap-2">
+      <Icon className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#b88a2a]" />
+      <p className="text-xs leading-6 text-[#6b5b3e]">
+        <span className="font-semibold text-[#8d6720]">{label}: </span>
+        <span className="break-all">{value || "-"}</span>
+      </p>
+    </div>
+  );
+}
+
 export default function AdminUsersPage() {
   const router = useRouter();
-  const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const currentUser = getUser();
 
@@ -158,9 +190,9 @@ export default function AdminUsersPage() {
     }
 
     if (currentUser.role !== "SUPER_ADMIN") {
-  router.replace("/");
-  return;
-}
+      router.replace("/");
+      return;
+    }
 
     loadUsers();
   }, []);
@@ -489,20 +521,65 @@ export default function AdminUsersPage() {
                         className="rounded-2xl border border-[#ead7b0] bg-[#fffdf9] p-4"
                       >
                         {!isEditing ? (
-                          <div className="flex items-start justify-between gap-4">
-                            <div>
-                              <p className="text-lg font-bold text-[#4a3b22]">
-                                {user.name || "-"}
-                              </p>
-                              <p className="mt-1 text-sm text-[#6b5b3e]">
+                          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                            <div className="min-w-0 flex-1">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <p className="text-lg font-bold text-[#4a3b22]">
+                                  {user.name || "-"}
+                                </p>
+
+                                <span className="rounded-full bg-[#fff1cc] px-2.5 py-1 text-[11px] font-semibold text-[#8d6720]">
+                                  {user.role}
+                                </span>
+
+                                <span
+                                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold ${
+                                    user.twoFactorEnabled
+                                      ? "bg-green-50 text-green-600"
+                                      : "bg-orange-50 text-orange-500"
+                                  }`}
+                                >
+                                  <LockKeyhole className="h-3.5 w-3.5" />
+                                  {user.twoFactorEnabled
+                                    ? "เปิด 2FA แล้ว"
+                                    : "ยังไม่เปิด 2FA"}
+                                </span>
+                              </div>
+
+                              <p className="mt-1 text-sm text-[#6b5b3e] break-all">
                                 {user.email}
                               </p>
-                              <p className="mt-2 text-xs font-semibold text-[#b88a2a]">
-                                {user.role}
-                              </p>
+
+                              <div className="mt-3 grid gap-1.5 rounded-2xl border border-[#f0e1bd] bg-white p-3">
+                                <InfoRow
+                                  icon={Clock3}
+                                  label="เข้าใช้ล่าสุด"
+                                  value={formatLastLogin(user.lastLoginAt)}
+                                />
+                                <InfoRow
+                                  icon={Globe}
+                                  label="IP ล่าสุด"
+                                  value={user.lastLoginIp || "-"}
+                                />
+                                <InfoRow
+                                  icon={MonitorSmartphone}
+                                  label="อุปกรณ์"
+                                  value={user.lastLoginDevice || "-"}
+                                />
+                                <InfoRow
+                                  icon={MonitorSmartphone}
+                                  label="Browser"
+                                  value={user.lastLoginBrowser || "-"}
+                                />
+                                <InfoRow
+                                  icon={MonitorSmartphone}
+                                  label="OS"
+                                  value={user.lastLoginOs || "-"}
+                                />
+                              </div>
                             </div>
 
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 md:justify-end">
                               <button
                                 type="button"
                                 onClick={() => startEdit(user)}

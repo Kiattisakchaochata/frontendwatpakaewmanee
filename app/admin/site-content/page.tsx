@@ -210,7 +210,7 @@ function UploadBox({
 
 export default function AdminSiteContentPage() {
   const API_URL =
-    process.env.NEXT_PUBLIC_API_URL || "http://localhost:8899/api";
+    process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const [form, setForm] = useState<SiteContent>({
     templeName: "",
